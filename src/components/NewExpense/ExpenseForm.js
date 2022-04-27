@@ -43,9 +43,21 @@ const ExpenseForm = () => {
     //   enteredDate: event.target.value,
     // });
   };
+  //By default, if the Add Expense button is clicked, the page reloads. To prevent the behavior, we need the submitHandler function to manually collect the data and do something with it.
+  const submitHandler = (event) => {
+    event.preventDefault(); // prevent default behavior, which is to send the request and refresh the page
+    //Create an object to store the data
+    const expenseData = {
+      // Store the current state data in the object
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
+  };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
