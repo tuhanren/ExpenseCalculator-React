@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -53,8 +53,10 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
-    // Reset the state, Refresh the input fields
+    //console.log(expenseData);
+    //Pass the expenseData object to the onSaveExpenseData function, saveExpenseDataHandler is defined in NewExpense component, now being executed in ExpenseForm component.
+    props.onSaveExpenseData(expenseData);
+    // Reset the state, clear the input fields
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");

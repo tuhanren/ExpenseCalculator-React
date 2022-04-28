@@ -33,9 +33,15 @@ const App = () => {
   //   React.createElement(Expenses, { items: expenses })
   // );
 
+  // Before return, define a function to add expense to expenses array
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+  // In return, add a pointer to <NewExpense />
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
