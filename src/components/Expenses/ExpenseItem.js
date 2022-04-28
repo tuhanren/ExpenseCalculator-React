@@ -17,7 +17,7 @@ const ExpenseItem = (props) => {
   };
 
   return (
-    //Card is a custom component, not like the div, build-in component that css will support automactically, it will do only been told
+    /* Card is a custom component, not like the div, build-in component that css will support automactically, it will do only been told */
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
