@@ -20,6 +20,18 @@ const Expenses = (props) => {
   //   console.log("Expense.js");
   //   console.log(selectedYear);
   // };
+  // Alternative conditional outputting 2 - Lean JSX
+  let expensesContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <div>
       <Card className="expenses">
@@ -28,15 +40,35 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {/* use map() to get the expenses array data, for each element create a <ExpenseItem> component */}
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {/* use map() to get the expenses array data, for each element create a <ExpenseItem> component and use ternary expression to show message if there is no expense item under certain condition */}
+        {/* {filteredExpenses.length === 0 ? (
+          <p>No expenses found.</p>
+        ) : (
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))
+        )} */}
+
+        {/* Alternative conditional outputting 1 - Abusing && features */}
+        {/* {filteredExpenses.length === 0 && <p>No expenses found.</p>}
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))} */}
+
+        {/* Alternative conditional outputting 2 - Lean JSX */}
+        {expensesContent}
+
         {/* // My Solution, in Expense.js replace the original map function with
         {props.items
                 .filter(
