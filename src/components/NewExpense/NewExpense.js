@@ -5,10 +5,9 @@ import ExpenseForm from "./ExpenseForm";
 const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
-      ...enteredExpenseData,
+      ...enteredExpenseData, // This is the old values that are being overwritten (that we dont need to change in this state)
       id: Math.random().toString(),
     };
-    //console.log(expenseData);
     //Add expense data to the expenses array
     props.onAddExpense(expenseData);
   };
