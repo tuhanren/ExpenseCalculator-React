@@ -1,8 +1,8 @@
 import "./Expenses.css";
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpenseFilter";
 import Card from "../UI/Card";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
   // Task3: create a state variable to store the filter value
@@ -20,18 +20,7 @@ const Expenses = (props) => {
   //   console.log("Expense.js");
   //   console.log(selectedYear);
   // };
-  // Alternative conditional outputting 2 - Lean JSX
-  let expensesContent = <p>No expenses found.</p>;
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
+
   return (
     <div>
       <Card className="expenses">
@@ -40,6 +29,8 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <ExpensesList items={filteredExpenses} />
+
         {/* use map() to get the expenses array data, for each element create a <ExpenseItem> component and use ternary expression to show message if there is no expense item under certain condition */}
         {/* {filteredExpenses.length === 0 ? (
           <p>No expenses found.</p>
@@ -65,44 +56,6 @@ const Expenses = (props) => {
               date={expense.date}
             />
           ))} */}
-
-        {/* Alternative conditional outputting 2 - Lean JSX */}
-        {expensesContent}
-
-        {/* // My Solution, in Expense.js replace the original map function with
-        {props.items
-                .filter(
-                  (expense) => expense.date.getFullYear().toString() === filteredYear
-                )
-                .map((expense) => (
-                  <ExpenseItem
-                    key={expense.id}
-                    title={expense.title}
-                    amount={expense.amount}
-                    date={expense.date}
-                  />
-                ))} */}
-
-        {/* <ExpenseItem
-          title={props.items[0].title}
-          amount={props.items[0].amount}
-          date={props.items[0].date}
-        />
-        <ExpenseItem
-          title={props.items[1].title}
-          amount={props.items[1].amount}
-          date={props.items[1].date}
-        />
-        <ExpenseItem
-          title={props.items[2].title}
-          amount={props.items[2].amount}
-          date={props.items[2].date}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={props.items[3].title}
-          amount={props.items[3].amount}
-          date={props.items[3].date}
-        ></ExpenseItem> */}
       </Card>
     </div>
   );
