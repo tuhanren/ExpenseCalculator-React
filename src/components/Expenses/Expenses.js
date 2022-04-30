@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ExpensesFilter from "./ExpenseFilter";
 import Card from "../UI/Card";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
   // Task3: create a state variable to store the filter value
@@ -29,6 +30,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList items={filteredExpenses} />
 
         {/* use map() to get the expenses array data, for each element create a <ExpenseItem> component and use ternary expression to show message if there is no expense item under certain condition */}

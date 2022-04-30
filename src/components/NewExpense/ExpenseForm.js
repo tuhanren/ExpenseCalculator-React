@@ -24,7 +24,7 @@ const ExpenseForm = (props) => {
     const expenseData = {
       // Store the current state data in the object
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount, // + sign is to convert the string to number
       date: new Date(enteredDate),
     };
     //console.log(expenseData);
